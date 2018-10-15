@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Quiq POS</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/q_fav.png" type="image/gif" sizes="16x16">
+    <link href="css/bootstrap.min.css" rel="stylesheet"><!--Bootstrap 3.3.7-->
+    <link href="css/material.css" rel="stylesheet"><!--Material UI-->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" /><!--Font-awesome-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"><!--Google Fonts-->
+    <link rel="stylesheet" href="css/Roboto/Roboto_Font.css" />
+    <link rel="stylesheet" type="text/css" href="css/quiq_pos_style.css"><!--quiq Stylesheet-->
+</head>
+<body>
+	<div class="outer_frame flexBox">
+		<div class="top_bar flexBox">
+			<div class="brand_button flexBox">
+				<div class="logo_image"><img src="images/quiq_pos_logo.png"></div>
+				<button id="menuBtn" class="menu_pin arrw">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+			<div class="top_bar_section flexBox">
+				<div class="info_crumbs">Login Time: <label>6:10PM</label></div>
+				<div class="info_crumbs">Shift: <label>2</label></div>
+				<div class="info_crumbs">POS: <label>Restaurant</label></div>
+				<div class="info_crumbs">Last Doc No: <label>135</label></div>
+				<div class="info_crumbs">Bill Amount: <label>260.00</label></div>
+				<div class="info_crumbs">Table No: <label>T3</label></div>
+				<div class="info_crumbs">Waiter Name: <label>Admins</label></div>
+				<div class="top_bar_date flexBox">08/08/2018</div>
+				<!--<div class="badge_msg">
+					<div class="badge_icon"><img src="images/msg_icon.png"></div>
+					<div class="badge_count">2</div>
+				</div>-->
+				<div class="user_btn flexBox dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <i class="fa fa-caret-down"></i></a>
+		              <ul class="dropdown-menu dropdown-menu-right">
+		                <li><a href="#">My Account</a></li>
+		                <li><a href="#">Edit Profile</a></li>
+		                <li><a href="#">Log Out</a></li>
+		              </ul>
+				</div>
+			</div>
+		</div>
+		<div class="middle_section_q flexBox">
+			<div class="side_panel mobHid tltip" id="sidePnl">
+				<ul>
+					<li><button id="tt1" data-toggle="modal" data-target="#myModal_6"><img src="images/icon_sample.png">Merge Kot</button>
+						<div class="mdl-tooltip" data-mdl-for="tt1">
+							Merge Kot
+						</div>
+					</li>
+					<li><button id="tt2" data-toggle="modal" data-target="#myModal_7"><img src="images/icon_sample.png">View Bill</button>
+						<div class="mdl-tooltip" data-mdl-for="tt2">
+							View Bill
+						</div>
+					</li>
+					<li><button id="tt3" data-toggle="modal" data-target="#myModal_9"><img src="images/icon_sample.png">Settle</button>
+						<div class="mdl-tooltip" data-mdl-for="tt3">
+							Settle
+						</div>
+					</li>
+					<li><button id="tt4" data-toggle="modal" data-target="#myModal_10"><img src="images/icon_sample.png">Void Kot</button>
+						<div class="mdl-tooltip" data-mdl-for="tt4">
+							Void Bill
+						</div>
+					</li>
+					<li><button id="tt5" data-toggle="modal" data-target="#myModal_12"><img src="images/icon_sample.png">Void Bill</button>
+						<div class="mdl-tooltip" data-mdl-for="tt5">
+							View Bill
+						</div>
+					</li>
+					<li><button id="tt6" data-toggle="modal" data-target="#myModal_13"><img src="images/icon_sample.png">Pay In</button>
+						<div class="mdl-tooltip" data-mdl-for="tt6">
+							Pay In
+						</div>
+					</li>
+					<li><button id="tt7" data-toggle="modal" data-target="#myModal_14"><img src="images/icon_sample.png">Pay Out</button>
+						<div class="mdl-tooltip" data-mdl-for="tt7">
+							Pay Out
+						</div>
+					</li>
+					<li><button id="tt8"><img src="images/icon_sample.png">Shift Close</button>
+						<div class="mdl-tooltip" data-mdl-for="tt8">
+							Shift Close
+						</div>
+					</li>
+					<li><button id="tt9" data-toggle="modal" data-target="#myModal_15"><img src="images/icon_sample.png">Change Table</button>
+						<div class="mdl-tooltip" data-mdl-for="tt9">
+							Change Table
+						</div>
+					</li>
+					<li><button id="tt10"><img src="images/icon_sample.png">Change Pin</button>
+						<div class="mdl-tooltip" data-mdl-for="tt10">
+							Change Pin
+						</div>
+					</li>
+					<li><button id="tt11"><img src="images/icon_sample.png">Split Bill</button>
+						<div class="mdl-tooltip" data-mdl-for="tt11">
+							Split Bill
+						</div>
+					</li>
+					<li><button id="tt12"><img src="images/icon_sample.png">Hold / Unhold <span>25</span></button>
+						<div class="mdl-tooltip" data-mdl-for="tt12">
+							Hold / Unhold
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="main_frame_q" id="mainPnl">
+				<div class="right_outer_frame flexBox">
+					<div class="bill_section">
+						<div class="head_selection flexBox al_it">
+							<button class="btn_quiq" data-toggle="modal" data-target="#myModal_5">Restaurant</button>
+							<label>T5: Walk-in Client</label>
+							<button class="btn_quiq al_right" data-toggle="modal" data-target="#myModal_3"><i class="fa fa-plus"></i> Add Customer</button>
+						</div>
+						<div class="table_bill">
+							<div class="bill_item_list">
+								<div class="row row_head">
+									<div class="col-sm-1">#</div>
+									<div class="col-sm-6">Product</div>
+									<div class="col-sm-2">Price</div>
+									<div class="col-sm-3">Quantity</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										1
+									</div>
+									<div class="col-sm-6">
+										<button class="bill_delete"><i class="fa fa-times"></i></button> Tandoori Chicken
+										<label class="modifrNote"><i class="fa fa-pencil-square" aria-hidden="true" title="Modifier"></i>safadsa</label>
+										<label class="addonNote"><i class="fa fa-puzzle-piece" aria-hidden="true" title="Add On"></i>sasdadasdadsd</label>
+										<label class="remarkNote"><i class="fa fa-comment" aria-hidden="true" title="Remarks"></i>sa dmsad kasdlkasmdlkmalkd s</label>
+									</div>
+									<div class="col-sm-2">12345</div>
+									<div class="col-sm-3">
+										<div class="flexBox al_it js_cnt">
+											<button class="bill_btn"><i class="fa fa-minus"></i></button>
+											<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+											<button class="bill_btn"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										1
+									</div>
+									<div class="col-sm-6">
+										<button class="bill_delete"><i class="fa fa-times"></i></button> Tandoori Chicken<label class="remarkNote">sa dmsad kasdlkasmdlkmalkd s</label>
+									</div>
+									<div class="col-sm-2">12345</div>
+									<div class="col-sm-3">
+										<div class="flexBox al_it js_cnt">
+											<button class="bill_btn"><i class="fa fa-minus"></i></button>
+											<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+											<button class="bill_btn"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										1
+									</div>
+									<div class="col-sm-6">
+										<button class="bill_delete"><i class="fa fa-times"></i></button> Tandoori Chicken<label class="remarkNote">sa dmsad kasdlkasmdlkmalkd s</label>
+									</div>
+									<div class="col-sm-2">12345</div>
+									<div class="col-sm-3">
+										<div class="flexBox al_it js_cnt">
+											<button class="bill_btn"><i class="fa fa-minus"></i></button>
+											<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+											<button class="bill_btn"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										1
+									</div>
+									<div class="col-sm-6">
+										<button class="bill_delete"><i class="fa fa-times"></i></button> Tandoori Chicken<label class="remarkNote">sa dmsad kasdlkasmdlkmalkd s</label>
+									</div>
+									<div class="col-sm-2">12345</div>
+									<div class="col-sm-3">
+										<div class="flexBox al_it js_cnt">
+											<button class="bill_btn"><i class="fa fa-minus"></i></button>
+											<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+											<button class="bill_btn"><i class="fa fa-plus"></i></button>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							<div class="itm_adjst flexBox">
+								<div class="flexBox">Total Items:<label>5</label></div>
+								<div class="flexBox"><a href="#">Sub Total :</a> <label>840.00</label></div>
+								<div class="flexBox"><a href="#">Discounts: </a><label>N.A</label></div>
+								<div class="flexBox"><a href="#">Tax Info (18%):</a> <label>151.20</label></div>
+							</div>
+							<div>
+								<button data-toggle="modal" data-target="#myModal_16">User Permission</button>
+								<button data-toggle="modal" data-target="#myModal_17">Category wise Discount Screen</button>
+								<button data-toggle="modal" data-target="#myModal_18">SETTLEMENT</button>
+								<button data-toggle="modal" data-target="#myModal_19">SHIFFT CLOSE</button>
+								<button data-toggle="modal" data-target="#myModal_20">SPLIT BILL</button>
+								<button data-toggle="modal" data-target="#myModal_21">Change Pin</button>
+								<button data-toggle="modal" data-target="#myModal_22">Success Message</button>
+								<button data-toggle="modal" data-target="#myModal_23">Failed Message</button>
+							</div>
+							<div class="total_bill flexBox">
+								Total Amount Payable: <label>991.20</label>
+							</div>
+						</div>
+						<div class="bill_butns flexBox">
+							<button class="btn_quiq btn_gry"><i class="fa fa-chevron-left"></i> Back</button>
+							<button class="btn_quiq btn_deact"><i class="fa fa-times"></i> Cancel</button>
+							<button class="btn_quiq btn_blue"><i class="fa fa-plus"></i> New</button>
+							<button class="btn_quiq btn_drk"><i class="fa fa-hourglass-half"></i> Hold</button>
+							<button class="btn_quiq" data-toggle="modal" data-target="#myModal_2"><i class="fa fa-usd"></i> Sub Total</button>
+							<button class="btn_quiq btn_grn"><i class="fa fa-save"></i> Save</button>
+							
+						</div>
+					</div>
+					<div class="item_section">
+						<div class="head_selection_2 flexBox al_it">
+							<div class="search_box2_covr">
+								<input type="text" name="" placeholder="Search" class="input_txt">
+								<button><i class="fa fa-search"></i></button>
+							</div>
+							<button class="btn_quiq mar_left" data-toggle="modal" data-target="#myModal_25"><i class="fa fa-gear"></i></button>
+							<button class="btn_quiq mar_left" data-toggle="modal" data-target="#myModal_1"><i class="fa fa-external-link"></i> Category</button>
+							<button class="btn_quiq mar_left" data-toggle="modal" data-target="#Remarks"><i class="fa fa-comment"></i> Remarks</button>
+						</div>
+						<div class="food_menu flexBox">
+							<div class="sub_cat_section">
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+								<button class="sub_cat_btn"><i class="fa fa-folder-open" aria-hidden="true"></i> Sub Category</button>
+							</div>
+							<div class="prod_category flexBox al_it js_cnt">
+								<div class="prod_category_name">Tandoori Chicken</div>
+								
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+								
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Chilli Chicken</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">French Fries</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+								<div class="modifier_notes">modifier notes</div>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Paneer Butter Masala</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Fried Rice</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Chicken Soup</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Fried Chicken</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Strawberry Shake</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Butter Chicken</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Pepper Chicken</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<div class="prod_itm flexBox al_it js_cnt">
+								<div class="prod_itm_name">Garlic Chicken</div>
+								<span class="item_marker">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+						</div>
+						<div class="modifier_menu flexBox">
+							<div class="head_selection_2 flexBox al_it">
+								<input type="text" name="" placeholder="Qty" class="input_txt small_input">
+								<div class="search_box_covr mar_left">
+									<input type="text" name="" placeholder="Modifier" class="input_txt">
+								</div>
+								<button class="btn_quiq mar_left">Change</button>
+							</div>
+							<div class="modifyTable">
+								<div class="row wid100 tablHead">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-2">Description</div>
+									<div class="col-sm-1">Qty</div>
+									<div class="col-sm-1">Rate</div>
+									<div class="col-sm-1">Product Amount</div>
+									<div class="col-sm-1">Discount Percent</div>
+									<div class="col-sm-1">Discount Amount</div>
+									<div class="col-sm-1">Tax Amount</div>
+									<div class="col-sm-1">Amount</div>
+									<div class="col-sm-1">Actual Cost</div>
+									<div class="col-sm-1">Modifier</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1"><button class="deleteBtn"><i class="fa fa-times"></i></button></div>
+									<div class="col-sm-2">Bread Roast</div>
+									<div class="col-sm-1"><input type="text" name="" class="qty_small"></div>
+									<div class="col-sm-1">1,000.00</div>
+									<div class="col-sm-1">2,000.00</div>
+									<div class="col-sm-1">0</div>
+									<div class="col-sm-1">0.00</div>
+									<div class="col-sm-1">360.00</div>
+									<div class="col-sm-1">2360.00</div>
+									<div class="col-sm-1">1000</div>
+									<div class="col-sm-1">Soup</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1"><button class="deleteBtn"><i class="fa fa-times"></i></button></div>
+									<div class="col-sm-2">Bread Roast</div>
+									<div class="col-sm-1"><input type="text" name="" class="qty_small"></div>
+									<div class="col-sm-1">1,000.00</div>
+									<div class="col-sm-1">2,000.00</div>
+									<div class="col-sm-1">0</div>
+									<div class="col-sm-1">0.00</div>
+									<div class="col-sm-1">360.00</div>
+									<div class="col-sm-1">2360.00</div>
+									<div class="col-sm-1">1000</div>
+									<div class="col-sm-1">Soup</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_bar">
+			
+		</div>
+	</div>
+	<!--PRELOADER-->
+	<div class="preload_css flexBox al_it js_cnt" id="prelodr">
+		<div class="load_canvas">
+			<div class="loader"></div>
+			<div class="big_circ"></div>
+			<div class="small_circ"></div>
+		</div>
+	</div>
+	<!--POP UP SAMPLE-->
+	<div class="modal fade quiq_modal" id="myModal_1" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Waiter Selection</h4>
+	        </div>
+	        <div class="modal-body">
+	          <div class="pop_fld_1 js_cnt flexBox al_it">
+	          	<label>POS</label>
+	          	<select class="select_box">
+	          		<option>Restaurant</option>
+	          		<option>Retail</option>
+	          		<option>Home Delivery</option>
+	          	</select>
+	          </div>
+	          <div class="modal_scroll flexBox fl_wrap js_cnt">
+	          	<div class="waiter_box flexBox">
+	          		<div class="waiter_img"></div>
+	          		<div class="waiter_name flexBox al_it">John Smith</div>
+	          	</div>
+	          	<div class="waiter_box flexBox">
+	          		<div class="waiter_img"></div>
+	          		<div class="waiter_name flexBox al_it">Administator</div>
+	          	</div>
+	          	<div class="waiter_box flexBox">
+	          		<div class="waiter_img"></div>
+	          		<div class="waiter_name flexBox al_it">Nix David</div>
+	          	</div>
+	          	<div class="waiter_box flexBox">
+	          		<div class="waiter_img"></div>
+	          		<div class="waiter_name flexBox al_it">Mark White</div>
+	          	</div>
+	          	<div class="waiter_box flexBox">
+	          		<div class="waiter_img"></div>
+	          		<div class="waiter_name flexBox al_it">Cameron Black</div>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_2" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Waiter Selection</h4>
+	        </div>
+	        <div class="modal-body">
+	          <div class="pop_fld_1 js_cnt flexBox al_it">
+	          	<div class="wid_3">
+	          		<label>POS</label>
+		          	<select class="select_txt">
+		          		<option>Restaurant</option>
+		          		<option>Retail</option>
+		          		<option>Home Delivery</option>
+		          	</select>
+	          	</div>
+	          	<div class="wid_3">
+	          		<label>PAX</label>
+	          		<input type="text" name="" class="input_txt">
+	          	</div>
+	          </div>
+	          <div class="pax_counter flexBox js_cnt">
+	          	<button>1</button>
+	          	<button>2</button>
+	          	<button>3</button>
+	          	<button>4</button>
+	          	<button>5</button>
+	          	<button>6</button>
+	          	<button>7</button>
+	          	<button>8</button>
+	          	<button>9</button>
+	          	<button>0</button>
+	          </div>
+	          <div class="table_types">
+				<ul class="nav nav-tabs flexBox js_cnt">
+					<li class="active"><a data-toggle="tab" href="#home">All</a></li>
+					<li><a data-toggle="tab" href="#menu1">Vacant</a></li>
+					<li><a data-toggle="tab" href="#menu2">Occupied</a></li>
+					<li><a data-toggle="tab" href="#menu3">Settlement</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="home" class="tab-pane fade in active">
+					  <div class="tabl_container flexBox js_cnt fl_wrap">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_blue">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_orange">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					  </div>
+					</div>
+					<div id="menu1" class="tab-pane fade">
+					  <div class="tabl_container flexBox js_cnt fl_wrap">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					  </div>
+					</div>
+					<div id="menu2" class="tab-pane fade">
+					  <div class="tabl_container flexBox js_cnt fl_wrap">
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					  </div>
+					</div>
+					<div id="menu3" class="tab-pane fade">
+					  <div class="tabl_container flexBox js_cnt fl_wrap">
+						<div class="quiq_tabl flexBox tabl_blue">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_blue">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_blue">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_blue">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+	          </div>
+	          
+	          
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_3" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Customer</h4>
+	        </div>
+	        <div class="modal-body">
+	          <div class="pop_fld_1 js_cnt flexBox al_it">
+	          	<div class="wid_10">
+	          		<input type="text" name="" class="input_txt" placeholder="Search Name">
+	          	</div>
+	          </div>
+				<div class="row custm_head">
+							<div class="col-sm-3">Mobile Number</div>
+							<div class="col-sm-5">Name</div>
+							<div class="col-sm-4">Tax Identity</div>
+						</div>
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="customer_tabl_list">
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">+91-9876543210</div>
+							<div class="col-sm-5">John Smith</div>
+							<div class="col-sm-4">BVX343AD12</div>
+						</div>
+
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal_4"><i class="fa fa-plus"></i> Add Customer</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Use Guest</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_4" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Create Customer</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>First Name</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Last Name</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Gender</label>
+							<select>
+								<option>Select</option>
+							</select>
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Credit Limit</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Pay Items</label>
+							<select>
+								<option>Select</option>
+							</select>
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Tax ID</label>
+							<input type="text" name="">
+						</div>
+						<div class="divide_row"></div>
+						<div class="modal_form_box flexBox">
+							<label>Addess 1</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Address 2</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>City</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>State</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Mobile</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Zip Code</label>
+							<input type="text" name="">
+						</div>
+
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_5" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">POS Selection</h4>
+	        </div>
+	        <div class="modal-body">
+	          <div class="modal_scroll flexBox fl_wrap js_cnt">
+	          	<div class="pos_box box_retial flexBox js_cnt al_it">
+	          		<div><img src="images/pos_retail.png"></div>
+	          		<label>Retail</label>
+	          	</div>
+	          	<div class="pos_box box_restaurant flexBox js_cnt al_it">
+	          		<div><img src="images/pos_restaurant.png"></div>
+	          		<label>Restaurant</label>
+	          	</div>
+	          	<div class="pos_box box_home flexBox js_cnt al_it">
+	          		<div><img src="images/pos_home.png"></div>
+	          		<label>Home Delivery</label>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_6" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Merge Table</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>POS</label>
+							<select>
+								<option>Restaurant</option>
+								<option>Retail</option>
+								<option>Home Delivery</option>
+							</select>
+						</div>
+						<div class="divide_row"></div>
+					</div>
+					<div class="tabl_canvas flexBox">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name">Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					</div>
+					
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_7" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">View Bill</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>POS</label>
+							<select>
+								<option>Restaurant</option>
+								<option>Retail</option>
+								<option>Home Delivery</option>
+							</select>
+						</div>
+						<div class="divide_row"></div>
+					</div>
+					<div class="tabl_canvas flexBox">
+						<div class="quiq_tabl flexBox tabl_green" data-toggle="modal" data-target="#myModal_8">
+							<div class="tabl_name" >Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					</div>
+					
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal"  data-toggle="modal" data-target="#myModal_8">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_8" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">View Bill: Table-4</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+						<!--Kendo Table Here-->
+					sada<br/>
+					sada<br/>
+					sada<br/>
+					v
+					sada<br/>
+
+					sada<br/>
+					v
+					sada<br/>
+					sada<br/>
+					sada<br/>
+					sada<br/>sada<br/>
+					sada<br/>sada<br/>sada<br/>sada<br/>sada<br/>
+					
+					v
+					sada<br/>
+
+					sada<br/>
+					v
+					sada<br/>
+					sada<br/>
+					sada<br/>
+					sada<br/>sada<br/>
+					sada<br/>sada<br/>sada<br/>sada<br/>sada<br/>
+					
+				</div>
+				<div class="modal_form flexBox fl_wrap js_btwn">
+						
+						<div class="divide_row"></div>
+						<div class="bill_form_box flexBox">
+							<label>Amount</label>
+							<input type="text" name="">
+						</div>
+						<div class="bill_form_box flexBox">
+							<label>Discount</label>
+							<input type="text" name="">
+						</div>
+						<div class="bill_form_box flexBox">
+							<label>Discount Amount</label>
+							<input type="text" name="">
+						</div>
+						<div class="bill_form_box flexBox">
+							<label>Amount</label>
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="bill_btn_row">
+						<button type="button" class="btn_quiq">NC</button>
+						<button type="button" class="btn_quiq">Re Print</button>
+						<button type="button" class="btn_quiq">Category Disc</button>
+					</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default">Select Table</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success">Generate Bill</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_9" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Settle</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>POS</label>
+							<select>
+								<option>Restaurant</option>
+								<option>Retail</option>
+								<option>Home Delivery</option>
+							</select>
+						</div>
+						<div class="divide_row"></div>
+					</div>
+					<div class="tabl_canvas flexBox">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name" >Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					</div>
+					
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_10" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Table Selection</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>POS</label>
+							<select>
+								<option>Restaurant</option>
+								<option>Retail</option>
+								<option>Home Delivery</option>
+							</select>
+						</div>
+						<div class="divide_row"></div>
+					</div>
+					<div class="tabl_canvas flexBox">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name" >Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					</div>
+					
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#myModal_11">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_11" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Void KoT: Table 4 <span>20-09-2018</span></h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<!-- kendo Table here-->
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Select Table</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Save and Void KoT</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_12" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Table Selection</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>POS</label>
+							<select>
+								<option>Restaurant</option>
+								<option>Retail</option>
+								<option>Home Delivery</option>
+							</select>
+						</div>
+						<div class="divide_row"></div>
+					</div>
+					<div class="tabl_canvas flexBox">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name" >Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_13" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Pay In</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>Amount</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Description</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Customer Name</label>
+							<select>
+								<option>Select</option>
+							</select>
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Item Name</label>
+							<select>
+								<option>Select</option>
+							</select>
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Comments</label>
+							<input type="text" name="">
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade quiq_modal" id="myModal_14" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Pay Out</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>Amount</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Description</label>
+							<input type="text" name="">
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Customer Name</label>
+							<select>
+								<option>Select</option>
+							</select>
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Item Name</label>
+							<select>
+								<option>Select</option>
+							</select>
+						</div>
+						<div class="modal_form_box flexBox">
+							<label>Comments</label>
+							<input type="text" name="">
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_15" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Change Table</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="modal_form_box flexBox">
+							<label>POS</label>
+							<select>
+								<option>Restaurant</option>
+								<option>Retail</option>
+								<option>Home Delivery</option>
+							</select>
+						</div>
+						<div class="divide_row"></div>
+					</div>
+					<div class="tabl_canvas flexBox">
+						<div class="quiq_tabl flexBox tabl_green">
+							<div class="tabl_name" >Table 3</div>
+						</div>
+						<div class="quiq_tabl flexBox tabl_red">
+							<div class="tabl_name">Table 3</div>
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade quiq_modal" id="myModal_16" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">User Permission</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form_single flexBox fl_wrap">
+						<div class="single_form_box flexBox al_it">
+							<label>Username</label>
+							<input type="text" name="" placeholder="Username">
+						</div>
+						<div class="single_form_box flexBox al_it">
+							<label>Password</label>
+							<input type="password" name="" placeholder="Password">
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade quiq_modal" id="myModal_17" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Discount</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="discount_row">
+						<div class="disc_field flexBox al_it">
+							<label>Category</label>
+							<label>Disc. Percent.</label>
+						</div>
+						<div class="disc_field flexBox al_it">
+							<label>General</label>
+							<input type="text" name="" placeholder="%">
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade quiq_modal" id="myModal_18" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Payment on Bill No.1170</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					
+					<div class="pay_types">
+						<ul class="nav nav-tabs flexBox js_cnt">
+							<li class="active"><a data-toggle="tab" href="#">Cash</a></li>
+							<li><a data-toggle="tab" href="#">Card</a></li>
+							<li><a data-toggle="tab" href="#">Online</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="payTab1" class="tab-pane fade in active">
+								<div class="modal_form flexBox fl_wrap js_btwn">
+									<div class="modal_form_box flexBox modal_wide_3">
+										<label>Total Payable</label>
+										<input type="text" name="" placeholder="750.00" disabled="">
+									</div>
+									<div class="modal_form_box flexBox modal_wide_3">
+										<label>Total Paying</label>
+										<input type="text" name="" placeholder="2000.00">
+									</div>
+									<div class="modal_form_box flexBox modal_wide_3">
+										<label>Balance</label>
+										<input type="text" name="" placeholder="1250.00" disabled="">
+									</div>
+									<div class="modal_form_box flexBox modal_wide_3">
+										<label>Reference No</label>
+										<input type="text" name="" placeholder="1250.00" disabled="">
+									</div>
+									<div class="modal_form_box flexBox modal_wide_3">
+										<label>Amount</label>
+										<input type="text" name="" placeholder="1250.00">
+									</div>
+									<div class="modal_form_box flexBox modal_wide_3">
+										<label>Select Card</label>
+										<select>
+											<option>Visa</option>
+											<option>Maestro</option>
+										</select>
+									</div>
+									<div class="divide_row"></div>
+									<div class="modal_form_box flexBox modal_wide_3"></div>
+									<div class="modal_form_box flexBox modal_wide_3"></div>
+									<div class="modal_form_box flexBox modal_wide_3">
+										<button class="btn btn-success al_right">Pay</button>
+									</div>
+								</div>
+							</div>
+						</div>
+			          </div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <div class="note_bill flexBox">
+				Cash: <label>100</label>
+				Card: <label>150</label>
+				Online: <label>200</label>
+	          </div>
+	          
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Select Bill</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_19" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Shift Close</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="shift_clse">
+						<div class="row clse_head">
+							<div class="col-sm-5">Payment Type</div>
+							<div class="col-sm-4">Description</div>
+							<div class="col-sm-3">Amount</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-5">Cash Box Balance</div>
+							<div class="col-sm-4">N/A</div>
+							<div class="col-sm-3">0.00</div>
+						</div>
+					</div>
+					<div class="divide_row"></div>
+					<div class="discount_row">
+						<div class="disc_field flexBox al_it">
+							<label>Balance in Your Cash Drawer Should be</label>
+							<input type="text" name="" placeholder="2450.00">
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Report Preview</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_20" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Split Bill</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form flexBox fl_wrap js_btwn">
+						<div class="bill_form_box flexBox">
+							<label>Bill No</label>
+							<input type="text" name="">
+						</div>
+						<div class="bill_form_box flexBox">
+							<label>Amount</label>
+							<input type="text" name="">
+						</div>
+						<div class="bill_form_box flexBox">
+							<label>Split Count</label>
+							<input type="text" name="">
+						</div>
+						<div class="bill_form_box flexBox">
+							<button type="button" class="btn btn-success al_right" data-dismiss="modal">Split Bill</button>
+						</div>
+					</div>
+					<div class="food_menu flexBox">
+						<div class="prod_itm flexBox al_it js_cnt">
+							<div class="prod_doc_numb">1232454564</div>
+							<div class="prod_itm_name">
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox_1a">
+								  <input type="checkbox" id="checkbox_1a" class="mdl-checkbox__input">
+								</label>
+							Tandoori Chicken</div>
+						</div>
+						<div class="prod_itm flexBox al_it js_cnt">
+							
+							<div class="prod_itm_name">Tandoori Chicken</div>
+						</div>
+						<div class="prod_itm flexBox al_it js_cnt">
+							<div class="prod_itm_name">Tandoori Chicken</div>
+						</div>
+						<div class="prod_itm flexBox al_it js_cnt">
+							<div class="prod_itm_name">Tandoori Chicken</div>
+						</div>
+					</div>
+					<div class="splitBillgrid">
+						<!--Kendo Table Here-->
+					</div>
+												
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Select Bill</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Split</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Save Split</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="modal fade quiq_modal" id="myModal_21" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Change Password</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="modal_form_single flexBox fl_wrap">
+						<div class="single_form_box flexBox al_it">
+							<label>Current Password</label>
+							<input type="password" name="" placeholder="Current Password">
+						</div>
+						<div class="single_form_box flexBox al_it">
+							<label>New Password</label>
+							<input type="password" name="" placeholder="New Password">
+						</div>
+						<div class="single_form_box flexBox al_it">
+							<label>Confirm Password</label>
+							<input type="password" name="" placeholder="Confirm Password">
+						</div>
+					</div>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade succ_head" id="myModal_22" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Success</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<span class="succ_msg">KOT Saves Successfully!</span>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade fail_head" id="myModal_23" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Failed</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<span class="succ_msg">Operation Failed!</span>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="modal fade quiq_modal" id="myModal_25" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Filter</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<span class="filtr_box"> <!--hide and show this div-->
+						<ul>
+							<li><input type="checkbox" name=""> <span>Item 1</span></li>
+							<li><input type="checkbox" name=""> Item 1</li>
+							<li><input type="checkbox" name=""> Item 1 hjdf</li>
+							<li><input type="checkbox" name=""> <span>Item 1</span></li>
+							<li><input type="checkbox" name=""> Item 1</li>
+							<li><input type="checkbox" name=""> Item 1 hjdf</li>
+							<li><input type="checkbox" name=""> <span>Item 1</span></li>
+							<li><input type="checkbox" name=""> Item 1</li>
+							<li><input type="checkbox" name=""> Item 1 hjdf</li>
+							<li><input type="checkbox" name=""> <span>Item 1</span></li>
+							<li><input type="checkbox" name=""> Item 1</li>
+							<li><input type="checkbox" name=""> Item 1 hjdf sadad asd adas adsa dasd ad asd ad as ad</li>
+						</ul>
+					</span>
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Apply</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  <div class="modal fade quiq_modal" id="Remarks" role="dialog"><!--POP UP-->
+	    <div class="modal-dialog modal-lg">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Tandoori Chicken</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="item_sel_row">
+					<label class="itmName">Quantity</label>
+					<button class="bill_btn"><i class="fa fa-minus"></i></button>
+					<span class="item_counter"><input type="text" name="" ></span>
+					<button class="bill_btn"><i class="fa fa-plus"></i></button>
+					<label class="itmRate">Price Change</label>
+					<input type="text" name="" >
+				</div>
+				<div class="modal_scroll flexBox fl_wrap js_cnt">
+					<div class="addon_table">
+						<div class="title_addon">Add On</div>
+						<div class="row addon_row title_head">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-5">Item Name</div>
+							<div class="col-sm-2">Rate</div>
+							<div class="col-sm-4">Quantity</div>
+						</div>
+						<div class="row addon_row">
+							<div class="col-sm-1">
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-7">
+								  <input type="checkbox" id="checkbox-7" class="mdl-checkbox__input">
+								</label>
+							</div>
+							<div class="col-sm-5">Chicken fry</div>
+							<div class="col-sm-2">200</div>
+							<div class="col-sm-4">
+								<div class="flexBox al_it">
+									<button class="bill_btn"><i class="fa fa-minus"></i></button>
+									<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+									<button class="bill_btn"><i class="fa fa-plus"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="row addon_row">
+							<div class="col-sm-1">
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-8">
+								  <input type="checkbox" id="checkbox-8" class="mdl-checkbox__input">
+								</label>
+							</div>
+							<div class="col-sm-5">Beef fry</div>
+							<div class="col-sm-2">100</div>
+							<div class="col-sm-4">
+								<div class="flexBox al_it">
+									<button class="bill_btn"><i class="fa fa-minus"></i></button>
+									<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+									<button class="bill_btn"><i class="fa fa-plus"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="row addon_row">
+							<div class="col-sm-1">
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-9">
+								  <input type="checkbox" id="checkbox-9" class="mdl-checkbox__input">
+								</label>
+							</div>
+							<div class="col-sm-5">Paneer Butter Masala</div>
+							<div class="col-sm-2">200</div>
+							<div class="col-sm-4">
+								<div class="flexBox al_it">
+									<button class="bill_btn"><i class="fa fa-minus"></i></button>
+									<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+									<button class="bill_btn"><i class="fa fa-plus"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="row addon_row">
+							<div class="col-sm-1">
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-10">
+								  <input type="checkbox" id="checkbox-10" class="mdl-checkbox__input">
+								</label>
+							</div>
+							<div class="col-sm-5">Grilled Chicken</div>
+							<div class="col-sm-2">200</div>
+							<div class="col-sm-4">
+								<div class="flexBox al_it">
+									<button class="bill_btn"><i class="fa fa-minus"></i></button>
+									<span class="count_input"><input type="text" name="" class="bill_item_count"></span>
+									<button class="bill_btn"><i class="fa fa-plus"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="addon_table">
+						<div class="title_addon">Modifier</div>
+						<div class="tabl_canvas flexBox">
+							<div class="quiq_tabl_2 flexBox tabl_gr_grn">
+								<img src="images/salt-and-pepper.svg">
+								<div class="tabl_name">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
+									  <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input">
+									</label>
+									Salt
+								</div>
+							</div>
+							<div class="quiq_tabl_2 flexBox tabl_gr_grn">
+								<img src="images/salt-and-pepper.svg">
+								<div class="tabl_name">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-5">
+									  <input type="checkbox" id="checkbox-5" class="mdl-checkbox__input">
+									</label>
+									Pepper
+								</div>
+							</div>
+							<div class="quiq_tabl_2 flexBox tabl_gr_grn">
+								<img src="images/salt-and-pepper.svg">
+								<div class="tabl_name">
+									<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-6">
+									  <input type="checkbox" id="checkbox-6" class="mdl-checkbox__input">
+									</label>
+									Sauce
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="addon_table">
+						<div class="title_addon">Remarks</div>
+						<div class="row addon_row">
+							<div class="col-sm-12">
+								<textarea class="RemarkAdd" placeholder="Remarks"></textarea>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+	          </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-success" data-dismiss="modal">Apply</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  <!--Modal Ends-->
+	
+<script src="js/material.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+$(window).load(function(){
+	$("#prelodr").hide();
+});
+
+$(document).ready(function(){
+    $("#menuBtn").click(function(){
+        $("#menuBtn").toggleClass('arrw');
+        $("#sidePnl").toggleClass('hide_div');
+        $("#mainPnl").toggleClass('resze_div');
+        $("#sidePnl").toggleClass('tltip');
+    });
+    $(".prod_itm").click(function(){
+        $(this).find(".item_marker").toggle();
+        $(this).find(".prod_itm_name").toggleClass('itemSelect');
+        $(this).toggleClass('greenBord');
+    });
+    $(".modifyTable div").click(function(){
+        $(".modifyTable div").removeClass('whitBG');
+        $(this).toggleClass('whitBG');
+    });
+    $(".bill_item_list > .row").click(function(){
+        $(".bill_item_list > .row").removeClass('editSel');
+        $(this).addClass('editSel');
+    });
+});
+
+</script>
+</body>
+</html>
